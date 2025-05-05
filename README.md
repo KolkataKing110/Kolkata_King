@@ -1,37 +1,95 @@
-# 🤖 KOLKATA AutoFilter Bot
+<p align="center">
+  <img src="assets/logo.jpg" width="200" alt="Kolkata King Logo">
+</p>
 
-KOLKATA AutoFilter Bot ek powerful Telegram bot hai jo groups mein shared files ke liye automatic filters create karta hai. Yeh bot users ko asani se files search karne aur retrieve karne mein madad karta hai.
+<h1 align="center">🤖 KOLKATA AutoFilter Bot</h1>
+
+<p align="center">
+  A powerful Telegram bot that automatically filters and indexes files in your group, with blazing-fast inline search and premium user experience.
+</p>
+
+---
 
 ## 🚀 Features
 
-- 🔍 Automatic filter creation for shared files
-- 🧠 Manual filter management
-- 📁 Support for all file types
-- 👥 Admin-only filter options
-- 🔄 Inline search support
-- 📦 MongoDB integration for data storage
-- 🛠️ Easy deployment on Heroku, Railway, or local server
+- 🔍 Auto filter creation for all shared files
+- 🧠 Manual filter support (for custom control)
+- 🗃️ Works with all file types (videos, PDFs, docs, etc.)
+- 👑 Admin-only options for enhanced moderation
+- ⚡ Lightning-fast inline search (`@YourBot query`)
+- 🧩 MongoDB-based storage and fast indexing
+- ☁️ Easy deployment on **Heroku**, **Railway**, or **local**
 
-## 🛠️ Technologies Used
+---
 
-- 🐍 Python 3
-- 📚 Pyrogram
-- 🗄️ MongoDB
-- 📡 Telegram Bot API
+## 🛠️ Tech Stack
 
-## 📦 Installation
+- 🐍 **Python 3.10+**
+- 💬 **Pyrogram** (Telegram API client)
+- 🗄️ **MongoDB** (Database backend)
+- ☁️ **Heroku / Railway** (for cloud deployment)
 
-### Prerequisites
+---
+
+## ⚙️ Installation Guide
+
+### 🔗 Requirements
 
 - Python 3.10+
 - MongoDB URI
 - Telegram Bot Token
-- API ID & Hash from [my.telegram.org](https://my.telegram.org)
+- Telegram API ID & Hash → [my.telegram.org](https://my.telegram.org)
 
-### Steps
+---
 
-1. Clone the repository:
+### 🧑‍💻 Setup Instructions
 
-   ```bash
-   git clone https://github.com/KOLKATA_KING/KOLKATA.git
-   cd KOLKATA
+```bash
+# Clone the repository
+git clone https://github.com/KOLKATA_KING/KOLKATA.git
+cd KOLKATA
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Fill in your environment variables (can use .env or Heroku config vars)
+
+# Run the bot
+python3 main.py
+
+
+---
+
+🧪 Testing Inline
+
+Type in any chat:
+
+@YourBotName your search term
+
+Bot will return instant matching files from your group!
+
+
+---
+
+💖 Contributing
+
+Pull requests and suggestions are welcome. Make sure your changes are well documented.
+
+
+---
+
+📬 Contact & Support
+
+Telegram: Kolkata King
+
+Issues: GitHub Issues
+
+
+
+---
+
+<p align="center">
+  Made with ❤️ by <strong>KOLKATA KING</strong>
+</p>
+```
+---

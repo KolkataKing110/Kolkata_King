@@ -72,7 +72,7 @@ async def start():
     else:
         logging.info(f"Since primary DB have enough space ({free_dbSize}MB) left, It will be used for storing datas.")
     await choose_mediaDB()
-    me = await TechVJBot.get_me()
+    me = await SUJAYBot.get_me()
     temp.ME = me.id
     temp.U_NAME = me.username
     temp.B_NAME = me.first_name

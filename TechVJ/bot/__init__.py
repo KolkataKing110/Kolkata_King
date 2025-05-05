@@ -1,6 +1,5 @@
-# Don't Remove Credit @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit @SUJAY
+# Ask Doubt on telegram @onefighterarmy
 
 import logging
 import logging.config
@@ -27,7 +26,7 @@ from pyrogram import Client
 from info import *
 
 
-class TechVJXBot(Client):
+class SujayXBot(Client):
 
     def __init__(self):
         super().__init__(
@@ -78,7 +77,7 @@ class TechVJXBot(Client):
                 yield message
                 current += 1
       
-TechVJBot = TechVJXBot()
+SujayBot = SujayXBot()
 
 multi_clients = {}
 work_loads = {}

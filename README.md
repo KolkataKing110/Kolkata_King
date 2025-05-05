@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.jpg" width="200" alt="Kolkata King Logo">
+  <img src="https://envs.sh/khT.jpg" width="200" alt="Kolkata King Logo">
 </p>
 
 <h1 align="center">🤖 KOLKATA AutoFilter Bot</h1>

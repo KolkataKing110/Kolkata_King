@@ -108,9 +108,23 @@ async def gen_link_batch(bot, message):
                 outlist.append(file)
         except:
             pass
-        if not og_msg % 20:
+        total_msgs = l_msg_id - f_msg_id + 1
+        def get_progress_bar(current, total, length=20):
+            done = int(length * current / total)
+            left = length - done
+            return f"[{'■' * done}{'□' * left}] {int((current/total)*100)}%"
+
+        if not og_msg % 10:  # Har 10 message ke baad update hoga
+            progress = get_progress_bar(tot, total_msgs)
             try:
-                await sts.edit(FRMT.format(total=l_msg_id-f_msg_id, current=tot, rem=((l_msg_id-f_msg_id) - tot), sts="Saving Messages"))
+                await sts.edit(
+                f"Generating Link...\n"
+                f"Total Messages: `{total_msgs}`\n"
+                f"Done: `{tot}`\n"
+                f"Remaining: `{total_msgs - tot}`\n"
+                f"Progress: `{progress}`\n"
+                f"Status: `Saving Messages`"
+                )
             except:
                 pass
     with open(f"batchmode_{message.from_user.id}.json", "w+") as out:

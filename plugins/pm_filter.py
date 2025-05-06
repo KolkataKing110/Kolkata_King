@@ -3041,7 +3041,7 @@ async def advantage_spell_chok(client, name, msg, reply_msg, vj_search):
                 mv_rqst = mv_rqst.capitalize()
             except:
                 pass
-            if mv_rqst.startswith(SUJAY[0]):
+            if mv_rqst.startswith(sujay[0]):
                 await auto_filter(client, sujay, msg, reply_msg, vj_search_new)
                 break
         reqst_gle = mv_rqst.replace(" ", "+")

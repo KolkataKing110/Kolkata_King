@@ -28,6 +28,7 @@ try:
         else:
             done += 1
             failed += 1
+            await asyncio.sleep(0.5)  # 0.5 second delay
 
         if not done % 20:
             await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")
@@ -47,6 +48,7 @@ done = failed = success = 0
 
 async for group in groups:
     pti, sh = await broadcast_messages_group(int(group['id']), b_msg, should_pin)
+    await asyncio.sleep(0.5)  # 0.5 second delay
     if pti:
         success += 1
     elif sh == "Error":

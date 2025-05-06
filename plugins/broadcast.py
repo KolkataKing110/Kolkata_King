@@ -28,7 +28,7 @@ try:
         else:
             done += 1
             failed += 1
-            await asyncio.sleep(0.5)  # 0.5 second delay
+        await asyncio.sleep(0.5)  # 0.5 second delay
 
         if not done % 20:
             await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")

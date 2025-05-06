@@ -1,6 +1,5 @@
-# Don't Remove Credit @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot @SUJAY
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit @SUJAY
+# Ask Doubt on telegram @onefighterarmy
 
 import re, math, logging, secrets, mimetypes, time
 from info import *

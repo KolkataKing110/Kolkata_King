@@ -17,9 +17,9 @@ SESSION = environ.get('SESSION', 'KOLKATA')
 API_ID = int(environ.get('API_ID', ''))
 API_HASH = environ.get('API_HASH', '')
 BOT_TOKEN = environ.get('BOT_TOKEN', "")
-owner_channel_url = environ.get('owner_channel_url', 'https://t.me/')
-owner_url = environ.get('owner_url', 'https://t.me/')
-request_here_channel = environ.get('request_here_channel', 'https://t.me/')
+OWNER_CHANNEL_URL = environ.get('OWNER_CHANNEL_URL', 'https://t.me/')
+OWNER_URL = environ.get('OWNER_URL', 'https://t.me/')
+REQUEST_HERE_CHANNEL = environ.get('REQUEST_HERE_CHANNEL', 'https://t.me/')
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 1800))

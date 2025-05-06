@@ -45,7 +45,13 @@ async def stream_start(client, message):
                 ]
             ] 
         )
-        msg_text = """<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b> 🖥ᴡᴀᴛᴄʜ  :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</b>"""
+        msg_text = (
+            f"<b>📂 File Name:</b> <code>{get_name(log_msg)}</code>\n"
+            f"<b>📦 File Size:</b> <code>{humanbytes(get_media_file_size(msg))}</code>\n"
+            f"<b>📥 Download:</b> <a href='{download}'>Click here</a>\n"
+            f"<b>🖥 Watch:</b> <a href='{stream}'>Click here</a>\n\n"
+            f"<i>Note: Link tab tak active rahega jab tak file delete na ho.</i>"
+        )
 
         await message.reply_text(text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(msg)), download, stream), quote=True, disable_web_page_preview=True, reply_markup=rm)
       

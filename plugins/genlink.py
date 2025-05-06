@@ -36,12 +36,13 @@ async def gen_link_s(bot, message):
 @Client.on_message(filters.command(['batch', 'pbatch']) & filters.create(allowed))
 async def gen_link_batch(bot, message):
     if " " not in message.text:
-        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/VJ_Botz/10 https://t.me/VJ_Botz/20</code>.")
+        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/sujay8372/10 https://t.me/sujay8372/20</code>.")
     links = message.text.strip().split(" ")
     if len(links) != 3:
-        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/VJ_Botz/10 https://t.me/VJ_Botz/20</code>.")
+        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/sujay8372/10 https://t.me/sujay8372/20</code>.")
     cmd, first, last = links
     regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
+    
     match = regex.match(first)
     if not match:
         return await message.reply('Invalid link')
@@ -70,24 +71,29 @@ async def gen_link_batch(bot, message):
         return await message.reply(f'Errors - {e}')
 
     sts = await message.reply("Generating link for your message.\nThis may take time depending upon number of messages")
+
+    # Agar channel allowed hai directly
     if chat_id in FILE_STORE_CHANNEL:
         string = f"{f_msg_id}_{l_msg_id}_{chat_id}_{cmd.lower().strip()}"
         b_64 = base64.urlsafe_b64encode(string.encode("ascii")).decode().strip("=")
         return await sts.edit(f"Here is your link https://t.me/{temp.U_NAME}?start=DSTORE-{b_64}")
 
-    FRMT = "Generating Link...\nTotal Messages: `{total}`\nDone: `{current}`\nRemaining: `{rem}`\nStatus: `{sts}`"
+    # Progress bar function
+    def get_progress_bar(current, total, length=20):
+        done = int(length * current / total)
+        left = length - done
+        return f"[{'■' * done}{'□' * left}] {int((current/total)*100)}%"
 
     outlist = []
-
-    # file store without db channel
     og_msg = 0
     tot = 0
+    total_msgs = l_msg_id - f_msg_id + 1
+
     async for msg in bot.iter_messages(f_chat_id, l_msg_id, f_msg_id):
         tot += 1
         if msg.empty or msg.service:
             continue
         if not msg.media:
-            # only media messages supported.
             continue
         try:
             file_type = msg.media
@@ -103,33 +109,31 @@ async def gen_link_batch(bot, message):
                     "size": file.file_size,
                     "protect": cmd.lower().strip() == "/pbatch",
                 }
-
-                og_msg +=1
+                og_msg += 1
                 outlist.append(file)
         except:
             pass
-        total_msgs = l_msg_id - f_msg_id + 1
-        def get_progress_bar(current, total, length=20):
-            done = int(length * current / total)
-            left = length - done
-            return f"[{'■' * done}{'□' * left}] {int((current/total)*100)}%"
 
-        if not og_msg % 10:  # Har 10 message ke baad update hoga
+        # Progress update
+        if not og_msg % 10:
             progress = get_progress_bar(tot, total_msgs)
             try:
                 await sts.edit(
-                f"Generating Link...\n"
-                f"Total Messages: `{total_msgs}`\n"
-                f"Done: `{tot}`\n"
-                f"Remaining: `{total_msgs - tot}`\n"
-                f"Progress: `{progress}`\n"
-                f"Status: `Saving Messages`"
+                    f"Generating Link...\n"
+                    f"Total Messages: `{total_msgs}`\n"
+                    f"Done: `{tot}`\n"
+                    f"Remaining: `{total_msgs - tot}`\n"
+                    f"Progress: `{progress}`\n"
+                    f"Status: `Saving Messages`"
                 )
             except:
                 pass
+
+    # Save JSON
     with open(f"batchmode_{message.from_user.id}.json", "w+") as out:
         json.dump(outlist, out)
     post = await bot.send_document(LOG_CHANNEL, f"batchmode_{message.from_user.id}.json", file_name="Batch.json", caption="⚠️Generated for filestore.")
     os.remove(f"batchmode_{message.from_user.id}.json")
+
     file_id, ref = unpack_new_file_id(post.document.file_id)
     await sts.edit(f"Here is your link\nContains `{og_msg}` files.\n https://t.me/{temp.U_NAME}?start=BATCH-{file_id}")

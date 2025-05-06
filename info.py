@@ -71,7 +71,6 @@ GRP_LNK = environ.get('GRP_LNK', '')
 CHNL_LNK = environ.get('CHNL_LNK', '')
 TUTORIAL = environ.get('TUTORIAL', '')
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '') # Support Channel mai Bot respose nahi dega link dena hoto Without https:// or @
-SUPPORT_GROUP = environ.get('SUPPORT_GROUP', '') # With https://
 
 
 # Clone Information : If Clone Mode Is True Then Bot Clone Other Bots.

@@ -6,12 +6,12 @@ import re, math, logging, secrets, mimetypes, time
 from info import *
 from aiohttp import web
 from aiohttp.http_exceptions import BadStatusLine
-from SUJAY.bot import multi_clients, work_loads, SUJAYBot
-from SUJAY.server.exceptions import FIleNotFound, InvalidHash
-from SUJAY import StartTime, __version__
-from SUJAY.util.custom_dl import ByteStreamer
-from SUJAY.util.time_format import get_readable_time
-from SUJAY.util.render_template import render_page
+from sujay.bot import multi_clients, work_loads, SUJAYBot
+from sujay.server.exceptions import FIleNotFound, InvalidHash
+from sujay import StartTime, __version__
+from sujay.util.custom_dl import ByteStreamer
+from sujay.util.time_format import get_readable_time
+from sujay.util.render_template import render_page
 
 routes = web.RouteTableDef()
 
